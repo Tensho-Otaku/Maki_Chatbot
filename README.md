@@ -7,7 +7,32 @@
 - 🎯 On-Demand Idea Generation: Instantly provides ideas based on user prompts.
 - 🔄 Dynamic Conversations: Creates interactive chat sessions to refine or expand ideas.
 - 🧠 AI-Powered: Utilizes the power of ollama.py for intelligent and context-aware idea generation.
+```mermaid
+flowchart TD
+    subgraph "User Interaction"
+        A("User"):::user
+        B("CLI (chatcli.py)"):::internal
+    end
 
+    subgraph "Backend Processing"
+        C("Chatbot Engine (main.py)"):::internal
+    end
+
+    D("Ollama External AI Service"):::external
+
+    A -->|"input"| B
+    B -->|"prompt_to_engine"| C
+    C -->|"send_request"| D
+    D -->|"idea_response"| C
+    C -->|"result_output"| B
+
+    click B "https://github.com/tensho-otaku/maki_chatbot/blob/main/./chatcli.py"
+    click C "https://github.com/tensho-otaku/maki_chatbot/blob/main/./main.py"
+
+    classDef internal fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef external fill:#f96,stroke:#333,stroke-width:2px;
+    classDef user fill:#afa,stroke:#333,stroke-width:2px;
+```
 ### 📌 How to Run Maki
 > [!IMPORTANT]
 >Install `ollama` on your system
